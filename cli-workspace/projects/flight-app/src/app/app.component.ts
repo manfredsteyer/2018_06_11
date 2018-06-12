@@ -22,9 +22,9 @@ export class AppComponent {
     private store: Store<State>,
     private authService: OAuthService) { 
 
-    // this.authService.configure(authConfig);
-    // this.authService.tokenValidationHandler = new JwksValidationHandler();
-    // this.authService.loadDiscoveryDocumentAndTryLogin();
+    this.authService.configure(authConfig);
+    this.authService.tokenValidationHandler = new JwksValidationHandler();
+    this.authService.loadDiscoveryDocumentAndTryLogin();
 
     this.setupUpdates();
     this.setupPush();
