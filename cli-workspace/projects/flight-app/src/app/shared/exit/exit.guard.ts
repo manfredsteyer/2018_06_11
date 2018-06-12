@@ -13,7 +13,7 @@ export interface ExitComponent {
 export class ExitGuard implements CanDeactivate<ExitComponent> {
     
     canDeactivate(component: ExitComponent, currentRoute: ActivatedRouteSnapshot, currentState: RouterStateSnapshot, nextState?: RouterStateSnapshot): boolean | Observable<boolean> | Promise<boolean> {
-        
+
         return component.canExit();
 
     }

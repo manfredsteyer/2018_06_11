@@ -26,15 +26,21 @@ export class FlightEditComponent implements OnInit, ExitComponent {
 
   canExit(): Observable<boolean> {
     this.showWarning = true;
+
     return Observable.create((sender: Observer<boolean>) => {
       this.sender = sender;
     });
+    
   }
 
   decide(decision: boolean): void {
     this.showWarning = false;
     this.sender.next(decision);
     this.sender.complete();
+  }
+
+  delete() {
+    console.debug('Jetzt würde gelöscht werden!');
   }
 
 }

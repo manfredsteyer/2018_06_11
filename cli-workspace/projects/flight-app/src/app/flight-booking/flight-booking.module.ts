@@ -15,6 +15,7 @@ import {PassengerSearchComponent} from './passenger-search/passenger-search.comp
     CommonModule,
     FormsModule,
     SharedModule.forChild(),
+    
     RouterModule.forChild(FLIGHT_BOOKING_ROUTES)
   ],
   declarations: [

@@ -15,11 +15,11 @@ export class AuthInterceptor implements HttpInterceptor {
 
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
         if (req.url.startsWith('http://www.angular.at/api')) {
-            
             const accessToken = this.oauthStorage.getItem('access_token');
             const headers = req.headers.set('Authorization', 'Bearer ' + accessToken);
             req = req.clone({ headers });
         }
+
         return next.handle(req).pipe(
             // tap(req => { this.doIt(req); }),
             catchError(err => this.handleError(err))
