@@ -1,7 +1,6 @@
 import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import { AuthService } from '../shared/auth/auth.service';
-import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 
 @Component({
   selector: 'app-home',
@@ -28,7 +27,6 @@ export class HomeComponent implements OnInit {
   }
 
   login(): void {
-    //this._userName = 'Login will be implemented in another exercise!'
     this.authService.login();
   }
 

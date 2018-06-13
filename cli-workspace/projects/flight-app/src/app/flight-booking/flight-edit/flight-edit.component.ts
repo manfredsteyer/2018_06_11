@@ -1,7 +1,8 @@
-import { Observable, Observer } from 'rxjs';
-import { ExitComponent } from './../../shared/exit/exit.guard';
+import { Observable } from 'rxjs/Observable';
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
+import { ExitComponent } from '../../shared/exit/exit.guard';
+import { Observer } from 'rxjs';
 
 @Component({
   selector: 'app-flight-edit',
@@ -17,6 +18,18 @@ export class FlightEditComponent implements OnInit, ExitComponent {
   constructor(private route: ActivatedRoute) {
   }
 
+  canExit(): Observable<boolean> {
+    return Observable.create((sender: Observer<boolean>) => {
+      this.sender = sender;
+      this.showWarning = true;
+    });
+  }
+
+  decide(decision: boolean): void {
+    this.sender.next(decision);
+    this.showWarning = false;
+  }
+
   ngOnInit() {
     this.route.params.subscribe(p => {
       this.id = p['id'];
@@ -24,23 +37,8 @@ export class FlightEditComponent implements OnInit, ExitComponent {
     });
   }
 
-  canExit(): Observable<boolean> {
-    this.showWarning = true;
-
-    return Observable.create((sender: Observer<boolean>) => {
-      this.sender = sender;
-    });
-    
-  }
-
-  decide(decision: boolean): void {
-    this.showWarning = false;
-    this.sender.next(decision);
-    this.sender.complete();
-  }
-
   delete() {
-    console.debug('Jetzt würde gelöscht werden!');
+    console.error('delete not implemented yet');
   }
 
 }

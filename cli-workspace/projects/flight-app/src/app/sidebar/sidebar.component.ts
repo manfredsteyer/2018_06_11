@@ -1,4 +1,6 @@
-import {Component} from '@angular/core';
+import { FlightCancellingService } from './../flight-cancelling/flight-cancelling.service';
+import { Component } from '@angular/core';
+import { MicroAppLoaderService } from './micro-app-loader.service';
 
 
 @Component({
@@ -7,4 +9,17 @@ import {Component} from '@angular/core';
 })
 
 export class SidebarComponent {
+
+  constructor(
+    private fcs: FlightCancellingService,
+    private loader: MicroAppLoaderService) {
+  }
+
+  cancel(): void {
+    this.fcs.show(4711);
+  }
+
+  load(): void {
+    this.loader.load();
+  }
 }

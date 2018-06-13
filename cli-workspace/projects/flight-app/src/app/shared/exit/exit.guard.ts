@@ -1,7 +1,7 @@
-import { Observable } from 'rxjs';
+import { Observable } from 'rxjs/Observable';
+import { Injectable } from '@angular/core';
 import { FlightEditComponent } from './../../flight-booking/flight-edit/flight-edit.component';
 import { CanDeactivate, ActivatedRouteSnapshot, RouterStateSnapshot } from "@angular/router";
-import { Injectable } from '@angular/core';
 
 export interface ExitComponent {
     canExit(): Observable<boolean>;
@@ -11,9 +11,8 @@ export interface ExitComponent {
     providedIn: 'root'
 })
 export class ExitGuard implements CanDeactivate<ExitComponent> {
-    
-    canDeactivate(component: ExitComponent, currentRoute: ActivatedRouteSnapshot, currentState: RouterStateSnapshot, nextState?: RouterStateSnapshot): boolean | Observable<boolean> | Promise<boolean> {
-
+    canDeactivate(component: ExitComponent, currentRoute: ActivatedRouteSnapshot, currentState: RouterStateSnapshot, nextState?: RouterStateSnapshot): Observable<boolean> {
+        
         return component.canExit();
 
     }

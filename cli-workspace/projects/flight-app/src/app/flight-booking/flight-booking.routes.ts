@@ -8,7 +8,7 @@ import { ExitGuard } from '../shared/exit/exit.guard';
 
 export const FLIGHT_BOOKING_ROUTES: Routes = [
   {
-    path: '',
+    path: 'flight-booking',
     component: FlightBookingComponent,
     children: [
       {
