@@ -22,6 +22,8 @@ export class AppComponent {
     private store: Store<State>,
     private authService: OAuthService) { 
 
+      this.store.dispatch(new Increment());
+
     this.authService.configure(authConfig);
     this.authService.tokenValidationHandler = new JwksValidationHandler();
     this.authService.loadDiscoveryDocumentAndTryLogin();
